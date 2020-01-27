@@ -1,0 +1,15 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Projas.Service.Entity;
+
+namespace Projas.Service.IService
+{
+  public  interface ISettingService : IBaseService<Settings>
+  {
+      void UpdateDurasi(Settings obj);
+      Settings GetTop1();
+  }
+}
