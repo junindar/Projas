@@ -308,12 +308,12 @@ namespace Projas
 
             TimeSpan ts = Convert.ToDateTime(strTime).Subtract(DateTime.Now);
             lblCountDown.Text = _strSholat + " - " + ts.ToString("hh':'mm':'ss");
-            if (lblCountDown.Text == _strSholat + " - 00:01:00")
+            if (lblCountDown.Text == _strSholat + " - 00:01:40")
             {
                 TopMost = false;
                 var frm = new frmIqomah
                 {
-                    iCountDown = 60, DurasiIqomah = iIqomah, NamaSholat = _strSholat, TopMost = true
+                    iCountDown = 100, DurasiIqomah = iIqomah, NamaSholat = _strSholat, TopMost = true
                 };
                 frm.ShowDialog();
                 countDownSholat();
@@ -346,7 +346,7 @@ namespace Projas
             try
             {
                 TopMost = false;
-                var frm = new frmSetting();
+                var frm = new frmLogin();
                 frm.ShowDialog();
                 LoadFormSettings();
 
@@ -368,7 +368,7 @@ namespace Projas
             {
                 TopMost = false;
                 var frm = new frmIqomah();
-                frm.iCountDown = 20;
+                frm.iCountDown = 5;
                 frm.DurasiIqomah = iIqomah;
                 frm.NamaSholat = _strSholat;
                // frm.TopMost = true;

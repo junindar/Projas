@@ -11,6 +11,7 @@ namespace Projas.Service.IService
         ICityService cityService { get; }
         IJadwalService jadwalService { get; }
         ISettingService settingService { get; }
+        IUserService userService { get; }
         void BeginTransaction();
         void Commit();
     }

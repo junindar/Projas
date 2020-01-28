@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucUser));
             this.txtBaru = new System.Windows.Forms.TextBox();
             this.txtLama = new System.Windows.Forms.TextBox();
@@ -38,21 +39,25 @@
             this.txtReBaru = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.bunifuElipse2 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.SuspendLayout();
             // 
             // txtBaru
             // 
             this.txtBaru.Location = new System.Drawing.Point(202, 130);
             this.txtBaru.Name = "txtBaru";
+            this.txtBaru.PasswordChar = '*';
             this.txtBaru.Size = new System.Drawing.Size(312, 20);
-            this.txtBaru.TabIndex = 19;
+            this.txtBaru.TabIndex = 1;
             // 
             // txtLama
             // 
             this.txtLama.Location = new System.Drawing.Point(202, 88);
             this.txtLama.Name = "txtLama";
+            this.txtLama.PasswordChar = '*';
             this.txtLama.Size = new System.Drawing.Size(312, 20);
-            this.txtLama.TabIndex = 18;
+            this.txtLama.TabIndex = 0;
             // 
             // label3
             // 
@@ -83,10 +88,10 @@
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(110, 320);
+            this.btnSave.Location = new System.Drawing.Point(126, 320);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(113, 54);
-            this.btnSave.TabIndex = 20;
+            this.btnSave.TabIndex = 3;
             this.btnSave.Text = " Simpan";
             this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSave.UseVisualStyleBackColor = false;
@@ -104,7 +109,7 @@
             this.btnClose.Location = new System.Drawing.Point(372, 320);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(113, 54);
-            this.btnClose.TabIndex = 21;
+            this.btnClose.TabIndex = 4;
             this.btnClose.Text = "Close";
             this.btnClose.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnClose.UseVisualStyleBackColor = false;
@@ -114,8 +119,9 @@
             // 
             this.txtReBaru.Location = new System.Drawing.Point(202, 172);
             this.txtReBaru.Name = "txtReBaru";
+            this.txtReBaru.PasswordChar = '*';
             this.txtReBaru.Size = new System.Drawing.Size(312, 20);
-            this.txtReBaru.TabIndex = 23;
+            this.txtReBaru.TabIndex = 2;
             // 
             // label1
             // 
@@ -136,6 +142,16 @@
             this.label5.Size = new System.Drawing.Size(225, 25);
             this.label5.TabIndex = 24;
             this.label5.Text = "Ganti Password Form";
+            // 
+            // bunifuElipse1
+            // 
+            this.bunifuElipse1.ElipseRadius = 25;
+            this.bunifuElipse1.TargetControl = this.btnSave;
+            // 
+            // bunifuElipse2
+            // 
+            this.bunifuElipse2.ElipseRadius = 25;
+            this.bunifuElipse2.TargetControl = this.btnClose;
             // 
             // ucUser
             // 
@@ -169,5 +185,7 @@
         private System.Windows.Forms.TextBox txtReBaru;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label5;
+        private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
+        private Bunifu.Framework.UI.BunifuElipse bunifuElipse2;
     }
 }

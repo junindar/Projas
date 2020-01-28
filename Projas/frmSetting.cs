@@ -21,8 +21,8 @@ namespace Projas
 {
     public partial class frmSetting : Form
     {
-        
 
+        public string Password { get; set; }
         private bool dragging = false;
        
         Point startPoint =new Point(0,0);
@@ -170,6 +170,7 @@ namespace Projas
                 this.pnlUC.Controls.Remove(itm);
             }
             ucUser uc1 = new ucUser();
+            uc1.Password = Password;
             this.pnlUC.Controls.Add(uc1);
             SidePanel.Visible = true;
             SidePanel.Height = btnPassword.Height;

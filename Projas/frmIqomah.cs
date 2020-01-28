@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BunifuAnimatorNS;
 
 namespace Projas
 {
@@ -21,6 +22,7 @@ namespace Projas
         private DateTime _dtIqomah;
         private bool IsIqomah ;
         private bool IsBlink ;
+
         public frmIqomah()
         {
             InitializeComponent();
@@ -28,33 +30,36 @@ namespace Projas
             Width = Screen.PrimaryScreen.Bounds.Width;
             Height = Screen.PrimaryScreen.Bounds.Height;
 
-            lblTime.Width = panel6.Width;
+            lblTime.Width = pnlTemplate.Width;
 
 
             lblTime.Top = Screen.PrimaryScreen.Bounds.Height / 2;
-
-
+            cpProgress.Top = (Screen.PrimaryScreen.Bounds.Height / 2)-100;
+            cpProgress.Left =(Width / 2)-260 ; 
         }
 
         private void frmIqomah_Load(object sender, EventArgs e)
         {
-
-           
+            lblTime.Visible = false;
+         
         }
 
         private void tmrAzan_Tick(object sender, EventArgs e)
         {
             if (iCountDown >= 0)
             {
+
+                cpProgress.Text = iCountDown.ToString();
+                cpProgress.Value = iCountDown;
                 lblText.Text = "Menuju Waktu Adzan";
                 lblSholat.Text = $"Sholat {NamaSholat}";
                 lblTime.Text = iCountDown.ToString();
+                cpProgress.Visible = true;
                 iCountDown--;
             }
 
             if (iCountDown<0 && iCountDown>=-iAdzanWait)
             {
-               
                 lblText.Text = "WAKTU ADZAN";
                 lblSholat.Text = NamaSholat;
                 lblTime.Text = "00:00";
@@ -68,7 +73,9 @@ namespace Projas
                 tmrAzan.Enabled = false;
                 tmrIqomah.Enabled = true;
                 tmrBlink.Enabled = false;
-                lblTime.ForeColor = Color.Yellow;
+                cpProgress.Visible = false;
+                lblTime.Visible = true;
+
                 iCountDown = (DurasiIqomah*60)+iCountDown;
                 _dtIqomah= DateTime.Now.AddSeconds(iCountDown);
                 lblText.Text = "Menuju IQOMAH";
@@ -83,6 +90,7 @@ namespace Projas
             if (_dtIqomah>=DateTime.Now  )
             {
                 lblTime.Text = _dtIqomah.Subtract(DateTime.Now).ToString("mm':'ss");
+               
                 return;
             }
            
@@ -98,8 +106,8 @@ namespace Projas
             {
                 lblText.Text = "WAKTU IQOMAH";
                 lblSholat.Text = $"Sholat {NamaSholat}";
+                lblTime.Visible = false;
                 tmrBlink.Enabled = true;
-                lblTime.ForeColor = Color.Yellow;
                 iCountDown--;
             }
             else if (iCountDown == 0 && lblTime.Text=="00:00")
@@ -110,16 +118,22 @@ namespace Projas
 
         private void tmrBlink_Tick(object sender, EventArgs e)
         {
-
             if (IsBlink )
             {
-                lblTime.ForeColor = Color.Yellow;
                 IsBlink = false;
+                lblText.ForeColor = Color.Yellow;
+                lblSholat.ForeColor = Color.Yellow;
+                BunifuTransition transition = new BunifuTransition();
+                transition.ShowSync(cpProgress, false, Animation.Particles);
             }
             else
             {
-                lblTime.ForeColor = Color.Red;
                 IsBlink = true;
+                lblText.ForeColor = Color.White;
+                lblSholat.ForeColor = Color.White;
+                BunifuTransition transition = new BunifuTransition();
+                transition.HideSync(cpProgress, false, Animation.Particles);
+
             }
         }
     }

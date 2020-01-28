@@ -15,6 +15,7 @@ namespace Projas.Service.Service
         private ICityService _cityService;
         private IJadwalService _jadwalService;
         private ISettingService _settingService;
+        private IUserService _userService;
         public UnitOfWork(IDapperContext context)
         {
             _context = context;
@@ -27,6 +28,9 @@ namespace Projas.Service.Service
 
         public ISettingService settingService =>
             _settingService ?? (_settingService = new SettingService(_context, _transaction));
+
+        public IUserService userService =>
+            _userService ?? (_userService = new UserService(_context, _transaction));
 
         public void BeginTransaction()
         {

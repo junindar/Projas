@@ -15,6 +15,7 @@ namespace Projas
 {
     public partial class ucUser : UserControl
     {
+        public string Password { get; set; }
         public ucUser()
         {
             InitializeComponent();
@@ -45,6 +46,16 @@ namespace Projas
         {
             try
             {
+                if (string.IsNullOrEmpty(txtLama.Text) || string.IsNullOrEmpty(txtBaru.Text) ||
+                    string.IsNullOrEmpty(txtReBaru.Text))
+                {
+                    throw new Exception("Masukkan seluruh data.");
+                }
+
+                if (txtLama.Text != Password)
+                {
+                    throw new Exception("Password Lama Salah");
+                }
                 if (txtBaru.Text != txtReBaru.Text)
                 {
                     throw new Exception("Password Baru dan Re-Password Baru tidak sama.");
@@ -53,11 +64,8 @@ namespace Projas
                 {
                     IUnitOfWork uow = new UnitOfWork(dapperContext);
                     uow.BeginTransaction();
-                    var user=new User();
-                    user.Password = txtBaru.Text;
-
-
-
+                    var user = new User {Password = txtBaru.Text};
+                    uow.userService.Update(user);
                     uow.Commit();
                     MessageBox.Show("Data Berhasil Disimpan.");
                 }

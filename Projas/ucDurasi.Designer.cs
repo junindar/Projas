@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucDurasi));
             this.txtAshar = new System.Windows.Forms.TextBox();
             this.txtDzuhur = new System.Windows.Forms.TextBox();
@@ -43,6 +44,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtSubuh = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.bunifuElipse2 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -199,6 +202,16 @@
             this.label5.TabIndex = 17;
             this.label5.Text = "Durasi Adzan ke Iqomah (Menit)";
             // 
+            // bunifuElipse1
+            // 
+            this.bunifuElipse1.ElipseRadius = 25;
+            this.bunifuElipse1.TargetControl = this.btnSave;
+            // 
+            // bunifuElipse2
+            // 
+            this.bunifuElipse2.ElipseRadius = 25;
+            this.bunifuElipse2.TargetControl = this.btnClose;
+            // 
             // ucDurasi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -229,5 +242,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtIsya;
         private System.Windows.Forms.Label label4;
+        private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
+        private Bunifu.Framework.UI.BunifuElipse bunifuElipse2;
     }
 }

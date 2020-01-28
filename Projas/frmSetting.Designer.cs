@@ -28,21 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSetting));
             this.pnlMenu = new System.Windows.Forms.Panel();
+            this.SidePanel = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.btnPassword = new System.Windows.Forms.Button();
+            this.btnDurasi = new System.Windows.Forms.Button();
+            this.btnMasjid = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.SidePanel = new System.Windows.Forms.Panel();
             this.button14 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnClose = new System.Windows.Forms.Button();
-            this.btnMasjid = new System.Windows.Forms.Button();
-            this.btnDurasi = new System.Windows.Forms.Button();
-            this.btnPassword = new System.Windows.Forms.Button();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.pnlUC = new System.Windows.Forms.Panel();
+            this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
+            this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.bunifuDragControl2 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
+            this.bunifuElipse2 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.pnlMenu.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -64,6 +69,73 @@
             this.pnlMenu.Name = "pnlMenu";
             this.pnlMenu.Size = new System.Drawing.Size(209, 450);
             this.pnlMenu.TabIndex = 1;
+            // 
+            // SidePanel
+            // 
+            this.SidePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
+            this.SidePanel.Location = new System.Drawing.Point(1, 185);
+            this.SidePanel.Name = "SidePanel";
+            this.SidePanel.Size = new System.Drawing.Size(10, 54);
+            this.SidePanel.TabIndex = 4;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
+            this.panel4.Location = new System.Drawing.Point(0, 441);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(209, 10);
+            this.panel4.TabIndex = 5;
+            // 
+            // btnPassword
+            // 
+            this.btnPassword.FlatAppearance.BorderSize = 0;
+            this.btnPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPassword.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPassword.ForeColor = System.Drawing.Color.White;
+            this.btnPassword.Image = ((System.Drawing.Image)(resources.GetObject("btnPassword.Image")));
+            this.btnPassword.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPassword.Location = new System.Drawing.Point(12, 305);
+            this.btnPassword.Name = "btnPassword";
+            this.btnPassword.Size = new System.Drawing.Size(191, 54);
+            this.btnPassword.TabIndex = 8;
+            this.btnPassword.Text = "       Password";
+            this.btnPassword.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnPassword.UseVisualStyleBackColor = true;
+            this.btnPassword.Click += new System.EventHandler(this.btnPassword_Click);
+            // 
+            // btnDurasi
+            // 
+            this.btnDurasi.FlatAppearance.BorderSize = 0;
+            this.btnDurasi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDurasi.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDurasi.ForeColor = System.Drawing.Color.White;
+            this.btnDurasi.Image = ((System.Drawing.Image)(resources.GetObject("btnDurasi.Image")));
+            this.btnDurasi.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDurasi.Location = new System.Drawing.Point(12, 245);
+            this.btnDurasi.Name = "btnDurasi";
+            this.btnDurasi.Size = new System.Drawing.Size(191, 54);
+            this.btnDurasi.TabIndex = 7;
+            this.btnDurasi.Text = "       Durasi";
+            this.btnDurasi.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnDurasi.UseVisualStyleBackColor = true;
+            this.btnDurasi.Click += new System.EventHandler(this.btnDurasi_Click);
+            // 
+            // btnMasjid
+            // 
+            this.btnMasjid.FlatAppearance.BorderSize = 0;
+            this.btnMasjid.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMasjid.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMasjid.ForeColor = System.Drawing.Color.White;
+            this.btnMasjid.Image = ((System.Drawing.Image)(resources.GetObject("btnMasjid.Image")));
+            this.btnMasjid.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMasjid.Location = new System.Drawing.Point(12, 185);
+            this.btnMasjid.Name = "btnMasjid";
+            this.btnMasjid.Size = new System.Drawing.Size(191, 54);
+            this.btnMasjid.TabIndex = 6;
+            this.btnMasjid.Text = "       Masjid";
+            this.btnMasjid.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnMasjid.UseVisualStyleBackColor = true;
+            this.btnMasjid.Click += new System.EventHandler(this.btnMasjid_Click);
             // 
             // panel3
             // 
@@ -107,14 +179,6 @@
             this.label2.Size = new System.Drawing.Size(68, 19);
             this.label2.TabIndex = 3;
             this.label2.Text = "PROJAS";
-            // 
-            // SidePanel
-            // 
-            this.SidePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
-            this.SidePanel.Location = new System.Drawing.Point(1, 185);
-            this.SidePanel.Name = "SidePanel";
-            this.SidePanel.Size = new System.Drawing.Size(10, 54);
-            this.SidePanel.TabIndex = 4;
             // 
             // button14
             // 
@@ -160,65 +224,6 @@
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // btnMasjid
-            // 
-            this.btnMasjid.FlatAppearance.BorderSize = 0;
-            this.btnMasjid.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMasjid.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMasjid.ForeColor = System.Drawing.Color.White;
-            this.btnMasjid.Image = ((System.Drawing.Image)(resources.GetObject("btnMasjid.Image")));
-            this.btnMasjid.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMasjid.Location = new System.Drawing.Point(12, 185);
-            this.btnMasjid.Name = "btnMasjid";
-            this.btnMasjid.Size = new System.Drawing.Size(191, 54);
-            this.btnMasjid.TabIndex = 6;
-            this.btnMasjid.Text = "       Masjid";
-            this.btnMasjid.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnMasjid.UseVisualStyleBackColor = true;
-            this.btnMasjid.Click += new System.EventHandler(this.btnMasjid_Click);
-            // 
-            // btnDurasi
-            // 
-            this.btnDurasi.FlatAppearance.BorderSize = 0;
-            this.btnDurasi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDurasi.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDurasi.ForeColor = System.Drawing.Color.White;
-            this.btnDurasi.Image = ((System.Drawing.Image)(resources.GetObject("btnDurasi.Image")));
-            this.btnDurasi.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDurasi.Location = new System.Drawing.Point(12, 245);
-            this.btnDurasi.Name = "btnDurasi";
-            this.btnDurasi.Size = new System.Drawing.Size(191, 54);
-            this.btnDurasi.TabIndex = 7;
-            this.btnDurasi.Text = "       Durasi";
-            this.btnDurasi.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnDurasi.UseVisualStyleBackColor = true;
-            this.btnDurasi.Click += new System.EventHandler(this.btnDurasi_Click);
-            // 
-            // btnPassword
-            // 
-            this.btnPassword.FlatAppearance.BorderSize = 0;
-            this.btnPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPassword.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPassword.ForeColor = System.Drawing.Color.White;
-            this.btnPassword.Image = ((System.Drawing.Image)(resources.GetObject("btnPassword.Image")));
-            this.btnPassword.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPassword.Location = new System.Drawing.Point(12, 305);
-            this.btnPassword.Name = "btnPassword";
-            this.btnPassword.Size = new System.Drawing.Size(191, 54);
-            this.btnPassword.TabIndex = 8;
-            this.btnPassword.Text = "       Password";
-            this.btnPassword.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnPassword.UseVisualStyleBackColor = true;
-            this.btnPassword.Click += new System.EventHandler(this.btnPassword_Click);
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
-            this.panel4.Location = new System.Drawing.Point(0, 441);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(209, 10);
-            this.panel4.TabIndex = 5;
-            // 
             // pnlUC
             // 
             this.pnlUC.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -226,6 +231,30 @@
             this.pnlUC.Name = "pnlUC";
             this.pnlUC.Size = new System.Drawing.Size(624, 403);
             this.pnlUC.TabIndex = 3;
+            // 
+            // bunifuDragControl1
+            // 
+            this.bunifuDragControl1.Fixed = true;
+            this.bunifuDragControl1.Horizontal = true;
+            this.bunifuDragControl1.TargetControl = this.panel2;
+            this.bunifuDragControl1.Vertical = true;
+            // 
+            // bunifuElipse1
+            // 
+            this.bunifuElipse1.ElipseRadius = 25;
+            this.bunifuElipse1.TargetControl = this;
+            // 
+            // bunifuDragControl2
+            // 
+            this.bunifuDragControl2.Fixed = true;
+            this.bunifuDragControl2.Horizontal = true;
+            this.bunifuDragControl2.TargetControl = this.pnlMenu;
+            this.bunifuDragControl2.Vertical = true;
+            // 
+            // bunifuElipse2
+            // 
+            this.bunifuElipse2.ElipseRadius = 25;
+            this.bunifuElipse2.TargetControl = this.panel3;
             // 
             // frmSetting
             // 
@@ -236,7 +265,9 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.pnlMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmSetting";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmSetting";
             this.Load += new System.EventHandler(this.frmSetting_Load);
@@ -268,5 +299,9 @@
         private System.Windows.Forms.Button btnMasjid;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel pnlUC;
+        private Bunifu.Framework.UI.BunifuDragControl bunifuDragControl1;
+        private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
+        private Bunifu.Framework.UI.BunifuDragControl bunifuDragControl2;
+        private Bunifu.Framework.UI.BunifuElipse bunifuElipse2;
     }
 }
