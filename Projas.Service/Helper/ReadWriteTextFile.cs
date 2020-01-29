@@ -16,43 +16,55 @@ namespace Projas.Service.Helper
 {
     public class APIHelper
     {
+      static  string CurrentProjectName = "Projas-Service";
         private static IEnumerable<DateTime> EachDay(DateTime from, DateTime to)
         {
             for (var day = from.Date; day.Date <= to.Date; day = day.AddDays(1))
                 yield return day;
         }
 
-        public static  async void GetApiData()
+        public static   void GetApiData()
         {
             using (var client = new HttpClient())
             {
-                var response = await client.GetAsync("https://api.banghasan.com/sholat/format/json/kota");
+                var response =  client.GetAsync("https://api.banghasan.com/sholat/format/json/kota").Result;
                 response.EnsureSuccessStatusCode();
-                var stringData = await response.Content.ReadAsStringAsync();
+                var stringData =  response.Content.ReadAsStringAsync().Result;
                 if (string.IsNullOrEmpty(stringData)) return;
-
+               
+                Log.WriteLog(CurrentProjectName, "Start ImportKotaToFile");
                 var tables = JsonConvert.DeserializeObject<Cities>(stringData);
                 ReadWriteTextFile.ImportKotaToFile(tables.Kota);
-
+                Log.WriteLog(CurrentProjectName, "End ImportKotaToFile");
 
                 DateTime EndDate = new DateTime(2045, 12, 31);
 
                 foreach (var itm in tables.Kota)
                 {
+                    Log.WriteLog(CurrentProjectName, $"Start Import All Jadwal Kota {itm.nama} To File");
                     foreach (DateTime day in EachDay(DateTime.Today, EndDate))
                     {
                         var url = $"https://api.banghasan.com/sholat/format/json/jadwal/kota/{itm.id}/tanggal/{day.ToString("yyyy-MM-dd")}";
-                        var responseJadwal = await client.GetAsync(url);
+                        var responseJadwal =  client.GetAsync(url).Result;
                         responseJadwal.EnsureSuccessStatusCode();
-                        var stringDataJadwal = await responseJadwal.Content.ReadAsStringAsync();
+                        var stringDataJadwal =  responseJadwal.Content.ReadAsStringAsync().Result;
                         if (string.IsNullOrEmpty(stringDataJadwal)) return;
 
                         var tablesJadwal = JsonConvert.DeserializeObject<Schedules>(stringDataJadwal);
                         var jadwalKota = tablesJadwal.jadwal.data;
                         jadwalKota.kota = itm.nama;
-                        ReadWriteTextFile.ImportJadwalKotaToFile(jadwalKota);
+                        try
+                        {
+                            ReadWriteTextFile.ImportJadwalKotaToFile(jadwalKota);
+                        }
+                        catch (Exception e)
+                        {
+                            Log.WriteLog(CurrentProjectName, $"Error ImportJadwalKotaToFile, Kota : {itm.nama}, Tanggal : {day.ToString("yyyy-MM-dd")}. Error Message  : {e.Message} ");
+                        }
+                       
 
                     }
+                    Log.WriteLog(CurrentProjectName, $"End Import All Jadwal Kota {itm.nama} To File");
                 }
 
 
@@ -66,6 +78,7 @@ namespace Projas.Service.Helper
 
    public class ReadWriteTextFile
     {
+        static string CurrentProjectName = "Projas-Service";
         private static ReaderWriterLockSlim _readWriteLock = new ReaderWriterLockSlim();
 
         public static void ImportKotaToFile(List<City> lst)
@@ -127,6 +140,7 @@ namespace Projas.Service.Helper
 
         public static void ExportKotaToDB(string fileName)
         {
+            Log.WriteLog(CurrentProjectName, "Start ExportKotaToDB");
             string strFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\TextData";
             var strFileName = strFolder + @"\" + fileName;
             var source = File.ReadLines(strFileName).Select(line => line.Split(';'));
@@ -137,13 +151,26 @@ namespace Projas.Service.Helper
                 obj.nama = itm[0];
                 lst.Add(obj);
             }
-            using (IDapperContext dapperContext = new DapperContext())
+
+            try
             {
-                IUnitOfWork uow = new UnitOfWork(dapperContext);
-                uow.BeginTransaction();
-                uow.cityService.InsertAll(lst);
-                uow.Commit();
+                using (IDapperContext dapperContext = new DapperContext())
+                {
+                    IUnitOfWork uow = new UnitOfWork(dapperContext);
+                    uow.BeginTransaction();
+                    uow.cityService.InsertAll(lst);
+                    uow.Commit();
+                }
             }
+            catch (Exception e)
+            {
+                Log.WriteLog(CurrentProjectName, $"Error ExportKotaToDB: {e.Message}");
+            }
+            finally
+            {
+                Log.WriteLog(CurrentProjectName, "End ExportKotaToDB");
+            }
+           
         }
 
         public static void ExportJadwalKotaToDB()
@@ -190,13 +217,22 @@ namespace Projas.Service.Helper
                         obj.terbit = itm[9];
                         lst.Add(obj);
                     }
-                    using (IDapperContext dapperContext = new DapperContext())
+
+                    try
                     {
-                        IUnitOfWork uow = new UnitOfWork(dapperContext);
-                        uow.BeginTransaction();
-                        uow.jadwalService.InsertAll(lst);
-                        uow.Commit();
+                        using (IDapperContext dapperContext = new DapperContext())
+                        {
+                            IUnitOfWork uow = new UnitOfWork(dapperContext);
+                            uow.BeginTransaction();
+                            uow.jadwalService.InsertAll(lst);
+                            uow.Commit();
+                        }
                     }
+                    catch (Exception e)
+                    {
+                        Log.WriteLog(CurrentProjectName, $"Error ExportJadwalKotaToDB: {e.Message}");
+                    }
+                   
                     intSkip += intBatch;
                     if (intSkip > intCount)
                     {

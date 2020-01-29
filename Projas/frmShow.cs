@@ -16,7 +16,7 @@ namespace Projas
 {
     public partial class frmShow : Form
     {
-        // private int timeLeft;
+
         string strTime ;
         private string _strSholat;
         private string _namaKota;

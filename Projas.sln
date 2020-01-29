@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Projas", "Projas\Projas.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Projas.Service", "Projas.Service\Projas.Service.csproj", "{7FC07036-F155-43F6-8427-E45BC3CD6B52}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Projas.WinServices", "Projas.WinServices\Projas.WinServices.csproj", "{D71E41C8-00E0-4D4F-B395-D39E27B63EE2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{7FC07036-F155-43F6-8427-E45BC3CD6B52}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7FC07036-F155-43F6-8427-E45BC3CD6B52}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7FC07036-F155-43F6-8427-E45BC3CD6B52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D71E41C8-00E0-4D4F-B395-D39E27B63EE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D71E41C8-00E0-4D4F-B395-D39E27B63EE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D71E41C8-00E0-4D4F-B395-D39E27B63EE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D71E41C8-00E0-4D4F-B395-D39E27B63EE2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
